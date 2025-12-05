@@ -29,7 +29,13 @@
   },
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.preferences.importModuleSpecifier": "relative",
-  "javascript.preferences.importModuleSpecifier": "relative"
+  "javascript.preferences.importModuleSpecifier": "relative",
+  "files.exclude": {
+    "**/.git": true,
+    "**/node_modules": true,
+    "**/.next": true,
+    "**/.vscode": true
+  }
 }
 
 // Note: Also Install Prettier , Prettier-Eslint and ESLint extensions in VSCode for this to work properly.

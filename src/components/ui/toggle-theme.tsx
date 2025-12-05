@@ -1,39 +1,61 @@
 "use client";
+/* eslint-disable */
 
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useCallback, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
-
 import { cn } from "~/utils";
 
-interface AnimatedThemeTogglerProps extends React.ComponentPropsWithoutRef<"button"> {
+interface ThemeTogglerProps extends React.ComponentPropsWithoutRef<"button"> {
   duration?: number;
 }
 
-export const AnimatedThemeToggler = ({
+export const ThemeToggler = ({
   className,
   duration = 1000,
   ...props
-}: AnimatedThemeTogglerProps) => {
+}: ThemeTogglerProps) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const { theme, setTheme, systemTheme } = useTheme();
-  const currentTheme = theme === "system" ? systemTheme : theme;
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const currentTheme = mounted
+    ? theme === "system"
+      ? systemTheme
+      : theme
+    : null;
+
   const isDark = currentTheme === "dark";
+
   const toggleTheme = useCallback(() => {
-    const newTheme = isDark ? "light" : "dark";
-    setTheme(newTheme);
+    setTheme(isDark ? "light" : "dark");
   }, [isDark, setTheme]);
 
-  const handleToggle = useCallback(async () => {
+  const handleToggle = useCallback(() => {
+    if (
+      typeof document === "undefined" ||
+      !("startViewTransition" in document)
+    ) {
+      toggleTheme();
+      return;
+    }
+
     if (!buttonRef.current) return;
-    const transition = document.startViewTransition(() => {
+
+    const transition = (document as any).startViewTransition(() => {
       flushSync(toggleTheme);
     });
+
     transition.ready.then(() => {
       document.documentElement.animate(
         {
-          clipPath: [`inset(100% 0 0 0)`, `inset(0 0 0 0)`],
+          clipPath: ["inset(100% 0 0 0)", "inset(0 0 0 0)"],
         },
         {
           duration,
@@ -43,6 +65,16 @@ export const AnimatedThemeToggler = ({
       );
     });
   }, [toggleTheme, duration]);
+
+  if (!mounted) {
+    return (
+      <button
+        aria-hidden
+        className={cn("opacity-0 pointer-events-none", className)}
+        {...props}
+      />
+    );
+  }
 
   return (
     <button
