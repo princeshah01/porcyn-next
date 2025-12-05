@@ -1,1 +1,1 @@
-export * as LandingComponents from "./landing-components";
+export * as LandingComponents from "./landing";
