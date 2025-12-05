@@ -1,11 +1,13 @@
 const VerticleLine = () => {
   return (
-    <div className="w-6 max-lg:w-0">
+    <div className="w-0 md:w-6 lg:w-10">
       <div
         className="
-          h-full max-lg:hidden border-x border-gray-300
-          bg-[repeating-linear-gradient(315deg,rgba(0,0,0,0.15)_0,rgba(0,0,0,0.15)_1px,transparent_0,transparent_50%)]
-          bg-size-[5px_5px] lg:bg-size-[7px_7px]
+          h-full w-full
+          hidden md:block
+          border-x border-border/50
+          bg-[repeating-linear-gradient(315deg,var(--border)_0,var(--border)_1px,transparent_0,transparent_50%)]
+          bg-size-[9px_9px]
         "
       />
     </div>
