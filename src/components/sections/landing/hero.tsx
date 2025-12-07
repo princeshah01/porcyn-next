@@ -14,7 +14,7 @@ export function Hero() {
       </p>
 
       <div className="flex flex-col-reverse md:flex-row gap-4 mt-8 items-center justify-center">
-        <RainbowButton>Ask Question</RainbowButton>
+        <RainbowButton className="w-full md:w-fit">Ask Question</RainbowButton>
         <SearchButton />
       </div>
     </section>

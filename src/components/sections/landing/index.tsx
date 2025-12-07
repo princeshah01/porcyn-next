@@ -1,3 +1,4 @@
+import { FeatureSection } from "./features";
 import { Footer } from "./footer";
 import { Hero } from "./hero";
 import { LandingLayout } from "./layout";
@@ -8,6 +9,7 @@ export function LandingPage() {
     <LandingLayout>
       <div className="w-full">
         <Hero />
+        <FeatureSection />
         <NewsLetterSignup />
         <Footer />
       </div>

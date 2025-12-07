@@ -21,7 +21,8 @@ export function SearchButton({
       {...props}
       className={cn(
         "relative flex items-center rounded-md transition-all",
-        !isOnlyIcon && "border border-border bg-muted/50 text-muted-foreground",
+        !isOnlyIcon &&
+          "border border-border/80 bg-muted/50 text-muted-foreground",
         "hover:bg-accent hover:text-accent-foreground",
         "outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50",
         isOnlyIcon
@@ -47,7 +48,7 @@ export function SearchButton({
           className={cn(
             "absolute right-2 top-1/2 -translate-y-1/2",
             "hidden sm:flex h-5 items-center gap-1",
-            "rounded border border-border bg-muted",
+            "rounded border border-border bg-accent/50",
             "px-1.5 font-mono text-[10px] font-medium opacity-90 select-none",
           )}
         >

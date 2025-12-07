@@ -31,10 +31,10 @@
   "typescript.preferences.importModuleSpecifier": "relative",
   "javascript.preferences.importModuleSpecifier": "relative",
   "files.exclude": {
-    "**/.git": true,
-    "**/node_modules": true,
-    "**/.next": true,
-    "**/.vscode": true
+    // "**/.git": true,
+    // "**/node_modules": true,
+    // "**/.next": true,
+    // "**/.vscode": true
   }
 }
 

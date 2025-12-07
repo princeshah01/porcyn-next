@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { ThemeToggler, LogoWithName } from "../../ui";
+import { ThemeToggler, LogoWithName } from "~/components/ui";
 
 export function Footer() {
   return (

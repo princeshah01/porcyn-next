@@ -60,7 +60,7 @@ export const ThemeToggler = () => {
     "bg-white text-zinc-500 hover:text-zinc-900 hover:bg-zinc-100 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:text-white dark:hover:bg-zinc-800";
 
   return (
-    <div className="grid grid-cols-2 w-[100px] overflow-hidden border border-border rounded-sm">
+    <div className="grid grid-cols-2 w-[100px] overflow-hidden border border-border/80 rounded-sm">
       <button
         aria-label="set light theme"
         type="button"
