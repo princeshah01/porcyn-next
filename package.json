@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "lint:fix": "eslint . --fix",
-    "prepare": "test -d .git && husky install"
+    "prepare": "test -d .git && npx husky install"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",
