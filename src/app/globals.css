@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "tw-animate-css";
+/* @import "tw-animate-css"; */
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -174,13 +174,14 @@
   --shadow-lg: var(--shadow-lg);
   --shadow-xl: var(--shadow-xl);
   --shadow-2xl: var(--shadow-2xl);
-  --animate-rainbow: rainbow var(--speed, 2s) infinite linear;
+  /* --animate-rainbow: rainbow var(--speed, 2s) infinite linear; */
   --color-color-5: var(--color-5);
   --color-color-4: var(--color-4);
   --color-color-3: var(--color-3);
   --color-color-2: var(--color-2);
   --color-color-1: var(--color-1);
-  @keyframes rainbow {
+
+  /* @keyframes rainbow {
     0% {
       background-position: 0%;
     }
@@ -188,6 +189,7 @@
       background-position: 200%;
     }
   }
+  */
 }
 
 ::view-transition-old(root),
@@ -203,17 +205,9 @@
     height: 100%;
     width: 100%;
     font-family: var(--font-space-grotesk), sans-serif;
+    @apply bg-background text-foreground;
     transition:
       background-color 0.3s ease,
       color 0.3s ease;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
   }
 }
