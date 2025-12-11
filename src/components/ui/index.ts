@@ -12,3 +12,4 @@ export * from "./button";
 export * from "./input";
 export * from "./feature-card";
 export * from "./sonner";
+export * from "./social-button";
