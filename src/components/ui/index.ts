@@ -16,3 +16,6 @@ export * from "./social-button";
 export * from "./profile-section";
 export * from "./avatar";
 export * from "./dropdown";
+export * from "./fields";
+export * from "./label";
+export * from "./separator";

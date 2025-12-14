@@ -16,7 +16,8 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { toast } from "sonner";
-
+import { getUserEmailPrefix } from "~/lib";
+import { Settings } from "lucide-react";
 export function ProfileSection() {
   const { data: session, status } = useSession();
   const params = useSearchParams();
@@ -48,7 +49,7 @@ export function ProfileSection() {
       ) : (
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <Avatar className="border-2 h-9 w-9 border-border/80">
+            <Avatar className="border-3 h-9 w-9 border-border">
               <AvatarImage
                 src={session.user?.image || undefined}
                 alt={session.user?.name || "User Avatar"}
@@ -59,13 +60,45 @@ export function ProfileSection() {
             </Avatar>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuLabel>
+              <div className="flex items-center gap-2">
+                <Avatar className="h-10 w-10">
+                  <AvatarImage
+                    src={session.user?.image || undefined}
+                    alt={session.user?.name || "User Avatar"}
+                  />
+                  <AvatarFallback>
+                    {session.user?.name?.charAt(0).toUpperCase()}
+                  </AvatarFallback>
+                </Avatar>
+                <div className="flex flex-col">
+                  <span className="text-xs">{session.user?.name}</span>
+                  <Link
+                    className=""
+                    href={`/me/${getUserEmailPrefix(session.user?.email!)}`}
+                  >
+                    <span className="text-[10px] text-secondary-foreground hover:underline underline-offset-2">
+                      View Profile
+                    </span>
+                  </Link>
+                </div>
+              </div>
+            </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Profile</DropdownMenuItem>
-            <DropdownMenuItem>Billing</DropdownMenuItem>
-            <DropdownMenuItem>Team</DropdownMenuItem>
             <DropdownMenuItem>
-              <Button onClick={() => signOut()}>Sign Out</Button>
+              <div className="flex items-center gap-2">
+                <Settings size={10} />
+                <span className="text-xs">Settings</span>
+              </div>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Button
+                size="sm"
+                className="w-full text-xs"
+                onClick={() => signOut()}
+              >
+                Sign Out
+              </Button>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

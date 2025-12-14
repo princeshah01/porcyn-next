@@ -1,8 +1,7 @@
-import React from "react";
-
 import { VerticleLine, LogoWithName, ProfileSection } from "~/components/ui";
+import { LayoutProps } from "~/types";
 
-const LandingLayout = async ({ children }: { children: React.ReactNode }) => {
+const LandingLayout = async ({ children }: LayoutProps) => {
   return (
     <div className="flex flex-col min-h-screen w-full">
       <nav className="h-14 w-full bg-background flex items-center justify-center fixed top-0 left-0 z-10 border-b border-border/80">

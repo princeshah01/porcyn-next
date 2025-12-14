@@ -2,12 +2,11 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "next-themes";
-import React from "react";
 
 import { auth } from "~/auth";
 import { Toaster } from "~/components/ui";
 import "./globals.css";
-
+import { LayoutProps } from "~/types";
 // Fonts
 const inter = localFont({
   src: "../assets/fonts/InterVF.ttf",
@@ -32,11 +31,7 @@ export const metadata: Metadata = {
   Porcyn brings everything together in one smart, connected space`,
 };
 
-export default async function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default async function RootLayout({ children }: LayoutProps) {
   const session = await auth();
   console.log("Session in RootLayout:", session);
   return (
