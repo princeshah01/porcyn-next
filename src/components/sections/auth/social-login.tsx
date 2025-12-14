@@ -9,9 +9,9 @@ import { ROUTES, SOCIAL_AUTH_PROVIDERS } from "~/constants";
 export function SocialLogin() {
   const handleSocialLogin = async (provider: "github" | "google") => {
     try {
-      console.log(`Signing in with ${provider}`);
-      await signIn(provider, { callbackUrl: ROUTES.HOME });
-      toast.success(`Logging in with ${provider}`);
+      await signIn(provider, {
+        callbackUrl: `${ROUTES.HOME}?provider=${provider}`,
+      });
     } catch (error) {
       console.error(error);
       toast.error(

@@ -13,3 +13,6 @@ export * from "./input";
 export * from "./feature-card";
 export * from "./sonner";
 export * from "./social-button";
+export * from "./profile-section";
+export * from "./avatar";
+export * from "./dropdown";
