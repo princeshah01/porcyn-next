@@ -1,4 +1,4 @@
 export type LayoutProps = Readonly<{
-  params?: Record<string, string | string[]>;
+  params?: Promise<Record<string, string | string[]>>;
   children: React.ReactNode;
 }>;
