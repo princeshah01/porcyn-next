@@ -17,11 +17,11 @@ export function FeatureCard({
   return (
     <div
       className={cn(
-        "flex relative group flex-col gap-6 h-64 items-center p-6 hover:bg-muted/30 transition-colors duration-200",
+        "flex relative group flex-col  p-6 hover:bg-muted/30 transition-colors duration-200",
         className,
       )}
     >
-      <div className="absolute inset-0 bg-linear-to-br from-primary/3 to-transparent opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-700"></div>
+      <div className="absolute inset-0 bg-linear-to-br from-primary/3 to-transparent opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-700" />
       <div className="w-full">
         <Image
           src={icon}

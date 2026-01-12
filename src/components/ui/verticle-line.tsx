@@ -7,7 +7,7 @@ const VerticleLine = () => {
           block
           border-x border-border/80
           bg-[repeating-linear-gradient(315deg,var(--border)_0,var(--border)_1px,transparent_0,transparent_50%)]
-          bg-size-[9px_9px]
+          bg-size-[6px_6px]
         "
       />
     </div>
