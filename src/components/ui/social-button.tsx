@@ -7,14 +7,17 @@ type SocialButtonProps = {
   label: string;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-function SocialButtons({ icon, name, label, ...props }: SocialButtonProps) {
+function SocialButtons({
+  icon,
+  name,
+  label,
+  className,
+  ...props
+}: SocialButtonProps) {
   return (
-    <Button
-      {...props}
-      className={cn("flex-1  rounded-xl text-xs", props.className)}
-    >
+    <Button {...props} className={cn("flex-1 rounded-xl text-xs", className)}>
       {icon}
-      <span className="font-semibold font-space-grotesk">{label}</span>
+      <span className="font-space-grotesk font-semibold">{label}</span>
     </Button>
   );
 }

@@ -49,7 +49,7 @@ export function ProfileSection() {
       ) : (
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <Avatar className="border-3 h-9 w-9 border-border">
+            <Avatar className="border-border h-9 w-9 border-3">
               <AvatarImage
                 src={session.user?.image || undefined}
                 alt={session.user?.name || "User Avatar"}
@@ -59,7 +59,7 @@ export function ProfileSection() {
               </AvatarFallback>
             </Avatar>
           </DropdownMenuTrigger>
-          <DropdownMenuContent>
+          <DropdownMenuContent className="mr-4">
             <DropdownMenuLabel>
               <div className="flex items-center gap-2">
                 <Avatar className="h-10 w-10">
@@ -77,7 +77,7 @@ export function ProfileSection() {
                     className=""
                     href={`/me/${getUserEmailPrefix(session.user?.email!)}`}
                   >
-                    <span className="text-[10px] text-secondary-foreground hover:underline underline-offset-2">
+                    <span className="text-secondary-foreground text-[10px] underline-offset-2 hover:underline">
                       View Profile
                     </span>
                   </Link>
