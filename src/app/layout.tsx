@@ -4,6 +4,7 @@ import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "next-themes";
 
 import { auth } from "~/auth";
+import { NavigationBar } from "~/components/layout";
 import { Toaster } from "~/components/ui";
 import "./globals.css";
 import { LayoutProps } from "~/types";
@@ -48,7 +49,10 @@ export default async function RootLayout({ children }: LayoutProps) {
             disableTransitionOnChange
           >
             <Toaster />
-            {children}
+            <div className="flex min-h-screen w-full flex-col">
+              <NavigationBar />
+              {children}
+            </div>
           </ThemeProvider>
         </body>
       </SessionProvider>

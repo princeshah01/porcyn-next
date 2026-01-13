@@ -12,7 +12,7 @@ export function FeatureSection() {
         </div>
       </div>
       <div className="divide-border/80 border-border/80 grid w-full flex-1 grid-cols-1 divide-y border-x md:w-5/6 md:grid-cols-3 md:divide-x md:divide-y-0">
-        {FEATURESDATA.map((item, idx) => (
+        {FEATURESDATA.map((item) => (
           <FeatureCard key={item.icon} {...item} />
         ))}
       </div>

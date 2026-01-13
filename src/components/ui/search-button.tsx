@@ -1,60 +1,71 @@
-import { CtrlIcon, SearchIcon } from "~/assets/svg";
+import { SearchIcon } from "~/assets/svg";
 import { cn } from "~/lib";
 import React from "react";
 
 export type SearchButtonProps =
   React.ButtonHTMLAttributes<HTMLButtonElement> & {
     className?: string;
-    variant?: "default" | "only-icon";
+    onlyIcon?: boolean;
   };
 
 export function SearchButton({
   className,
-  variant = "default",
+  onlyIcon = false,
   ...props
 }: SearchButtonProps) {
-  const isOnlyIcon = variant === "only-icon";
-
   return (
     <button
-      aria-label="open search modal"
+      type="button"
+      aria-label="Open search"
       {...props}
       className={cn(
         "relative flex items-center rounded-md transition-all",
-        !isOnlyIcon &&
-          "border border-border/80 bg-muted/50 text-muted-foreground",
+        !onlyIcon &&
+          "border-border/80 bg-muted/50 text-muted-foreground border",
         "hover:bg-accent hover:text-accent-foreground",
-        "outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50",
-        isOnlyIcon
+        "focus-visible:ring-ring/50 outline-none focus-visible:ring-[3px]",
+        onlyIcon
           ? "h-9 w-9 justify-center p-0"
-          : "h-9 w-full gap-2 pl-2 pr-4 sm:pr-14",
-
+          : "h-9 w-full gap-2 pr-4 pl-2 sm:pr-14",
         className,
       )}
     >
-      {isOnlyIcon && <CtrlIcon className="size-6 text-foreground" />}
-
-      {!isOnlyIcon && (
-        <>
-          <SearchIcon className="size-8 shrink-0 text-foreground" />
-          <span className="inline-flex opacity-70">
-            Search for Questions Here...
-          </span>
-        </>
-      )}
-
-      {!isOnlyIcon && (
-        <kbd
-          className={cn(
-            "absolute right-2 top-1/2 -translate-y-1/2",
-            "hidden sm:flex h-5 items-center gap-1",
-            "rounded border border-border bg-accent/50",
-            "px-1.5 font-mono text-[10px] font-medium opacity-90 select-none",
-          )}
+      {onlyIcon ? (
+        <span
+          className="md:bg-accent border-border inline-flex items-center gap-1 rounded-full p-1 md:border md:px-2"
+          aria-hidden
         >
-          <CtrlIcon className="w-3 h-3 opacity-70" />
-          <span className="text-[10px]">K</span>
-        </kbd>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            className="-ml-0.5 size-4 fill-gray-600 dark:fill-gray-500"
+          >
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+            />
+          </svg>
+          <kbd className="hidden font-sans text-xs/4 text-gray-500 md:block dark:text-gray-400">
+            Ctrl&nbsp;K
+          </kbd>
+        </span>
+      ) : (
+        <>
+          <SearchIcon className="size-5 shrink-0" />
+          <span className="opacity-70">Search for anything...</span>
+
+          <kbd
+            className={cn(
+              "absolute top-1/2 right-2 -translate-y-1/2",
+              "hidden h-5 items-center gap-1 md:flex",
+              "border-border bg-accent/50 rounded border",
+              "px-1.5 font-mono text-[10px] font-medium opacity-90 select-none",
+            )}
+          >
+            Ctrl <span>K</span>
+          </kbd>
+        </>
       )}
     </button>
   );
