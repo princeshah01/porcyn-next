@@ -19,6 +19,7 @@ const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
               "[&::-webkit-search-cancel-button]:appearance-none [&::-webkit-search-decoration]:appearance-none [&::-webkit-search-results-button]:appearance-none [&::-webkit-search-results-decoration]:appearance-none",
             type === "file" &&
               "text-muted-foreground/70 file:border-input file:text-foreground p-0 pr-3 italic file:me-3 file:h-full file:border-0 file:border-r file:border-solid file:bg-transparent file:px-3 file:text-sm file:font-medium file:not-italic",
+            "aria-invalid:border-destructive/70 focus-visible:aria-invalid:border-destructive/70 focus-visible:aria-invalid:ring-destructive/20",
             isPassword && "pr-10",
             className,
           )}

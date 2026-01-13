@@ -36,9 +36,5 @@ const SignUpSchema = SignInSchema.extend({
     .regex(/^[a-zA-Z\s]+$/, {
       message: "Name can only contain letters, spaces",
     }),
-  confirmPassword: z.string(),
-}).refine((data) => data.password === data.confirmPassword, {
-  message: "Passwords do not match",
 });
-
 export { SignInSchema, SignUpSchema };

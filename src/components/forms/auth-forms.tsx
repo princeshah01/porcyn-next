@@ -34,6 +34,7 @@ const AuthForms = <T extends FieldValues>({
 }: AuthFormsProps<T>) => {
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
+    mode: "onBlur",
     defaultValues: defaultValues as DefaultValues<T>,
   });
 
@@ -56,10 +57,6 @@ const AuthForms = <T extends FieldValues>({
     password: {
       placeholder: "Enter your password",
       label: "Password",
-    },
-    confirmPassword: {
-      placeholder: "Confirm your password",
-      label: "Confirm Password",
     },
   };
 
@@ -100,11 +97,7 @@ const AuthForms = <T extends FieldValues>({
                 <FormControl>
                   <Input
                     required
-                    type={
-                      ["password", "confirmPassword"].includes(field.name)
-                        ? "password"
-                        : "text"
-                    }
+                    type={field.name === "password" ? "password" : "text"}
                     {...field}
                     placeholder={
                       formFieldConfig[

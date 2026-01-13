@@ -9,11 +9,10 @@ export default function SignupPage() {
       formType="SIGN_UP"
       schema={SignUpSchema}
       defaultValues={{
+        name: "",
+        username: "",
         email: "",
         password: "",
-        username: "",
-        name: "",
-        confirmPassword: "",
       }}
       onSubmit={(data) => Promise.resolve({ success: true })}
     />
