@@ -36,6 +36,13 @@ export default async function RootLayout({ children }: LayoutProps) {
   console.log("Session in RootLayout:", session);
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+        />
+      </head>
       <body
         cz-shortcut-listen="true"
         className={`${inter.className} ${spaceGrotesk.variable} antialiased`}
