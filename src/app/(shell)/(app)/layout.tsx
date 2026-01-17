@@ -1,8 +1,6 @@
-import { MobileSidebar } from "~/components/layout/mobile-sidebar";
-import { NavLinks } from "~/components/layout/nav-links";
-import type { LayoutProps } from "~/types";
+import { MobileSidebar, NavLinks } from "~/components/layout";
 
-export default function Layout({ children }: LayoutProps) {
+export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen w-full">
       <MobileSidebar>

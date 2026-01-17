@@ -21,9 +21,7 @@ export function SearchButton({
       className={cn(
         "relative flex items-center rounded-md transition-all",
         !onlyIcon &&
-          "border-border/80 bg-muted/50 text-muted-foreground border",
-        "hover:bg-accent hover:text-accent-foreground",
-        "focus-visible:ring-ring/50 outline-none focus-visible:ring-[3px]",
+          `border-border/80 bg-muted/50 text-muted-foreground hover:bg-accent hover:text-accent-foreground focus-visible:ring-ring/50 border outline-none focus-visible:ring-[3px]`,
         onlyIcon
           ? "h-9 w-9 justify-center p-0"
           : "h-9 w-full gap-2 pr-4 pl-2 sm:pr-14",
@@ -38,7 +36,7 @@ export function SearchButton({
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"
-            className="-ml-0.5 size-4 fill-gray-600 dark:fill-gray-500"
+            className="fill-foreground/70 -ml-0.5 size-4 shrink-0"
           >
             <path
               fillRule="evenodd"
@@ -46,7 +44,7 @@ export function SearchButton({
               d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
             />
           </svg>
-          <kbd className="hidden font-sans text-xs/4 text-gray-500 md:block dark:text-gray-400">
+          <kbd className="text-foreground/80 hidden font-sans text-xs/4 md:block">
             Ctrl&nbsp;K
           </kbd>
         </span>

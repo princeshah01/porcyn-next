@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { SessionProvider } from "next-auth/react";
-import { ThemeProvider } from "next-themes";
 
 import { auth } from "~/auth";
-import { NavigationBar } from "~/components/layout";
+import { ThemeProvider } from "~/components/provider";
 import { Toaster } from "~/components/ui";
 import "./globals.css";
 import { LayoutProps } from "~/types";
@@ -37,25 +36,17 @@ export default async function RootLayout({ children }: LayoutProps) {
   console.log("Session in RootLayout:", session);
   return (
     <html lang="en" suppressHydrationWarning>
-      <SessionProvider session={session}>
-        <body
-          cz-shortcut-listen="true"
-          className={`${inter.className} ${spaceGrotesk.variable} antialiased`}
-        >
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
+      <body
+        cz-shortcut-listen="true"
+        className={`${inter.className} ${spaceGrotesk.variable} antialiased`}
+      >
+        <SessionProvider session={session}>
+          <ThemeProvider>
             <Toaster />
-            <div className="flex min-h-screen w-full flex-col">
-              <NavigationBar />
-              {children}
-            </div>
+            <div className="flex min-h-screen w-full flex-col">{children}</div>
           </ThemeProvider>
-        </body>
-      </SessionProvider>
+        </SessionProvider>
+      </body>
     </html>
   );
 }

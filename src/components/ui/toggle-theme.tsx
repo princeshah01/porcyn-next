@@ -48,19 +48,18 @@ export const ThemeToggler = () => {
   );
 
   if (!mounted) {
-    return <div className="w-[180px] h-10 opacity-0" />;
+    return <div className="h-10 w-45 opacity-0" />;
   }
 
   const btnBase =
     "flex items-center justify-center h-8 w-full transition-colors text-sm";
 
-  const active = "bg-zinc-200 text-zinc-900 dark:bg-zinc-800 dark:text-white";
+  const active = "bg-background/80";
 
-  const inactive =
-    "bg-white text-zinc-500 hover:text-zinc-900 hover:bg-zinc-100 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:text-white dark:hover:bg-zinc-800";
+  const inactive = "bg-muted";
 
   return (
-    <div className="grid grid-cols-2 w-[100px] overflow-hidden border border-border/80 rounded-sm">
+    <div className="border-border/80 grid w-25 grid-cols-2 overflow-hidden rounded-sm border">
       <button
         aria-label="set light theme"
         type="button"
