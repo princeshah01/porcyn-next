@@ -32,7 +32,7 @@ const MobileSidebar = ({ className, children }: MobileSidebarProps) => {
             variant="ghost"
             type="button"
             aria-label="Open menu"
-            className="hover:bg-accent inline-flex items-center justify-center rounded-md p-1"
+            className="inline-flex h-full items-center justify-center rounded-md"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +61,7 @@ const MobileSidebar = ({ className, children }: MobileSidebarProps) => {
         >
           <SheetTitle className="sr-only">Mobile menu</SheetTitle>
 
-          <div className="p-3" onClick={() => setOpen(false)}>
+          <div className="size-full p-3" onClick={() => setOpen(false)}>
             {children}
           </div>
         </SheetContent>

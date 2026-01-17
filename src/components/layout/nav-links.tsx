@@ -3,17 +3,20 @@
 import {
   BookmarkIcon,
   BriefcaseIcon,
-  CompassIcon,
   HomeIcon,
   PlusCircleIcon,
   TagsIcon,
   UsersIcon,
 } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 import { ROUTES } from "~/constants";
 import { cn } from "~/lib";
+
+import { ThemeToggler } from "../ui";
 
 type NavLinksProps = {
   className?: string;
@@ -27,37 +30,69 @@ const NAV_ITEMS = [
   { href: ROUTES.JOBS, label: "Jobs", icon: BriefcaseIcon },
   { href: ROUTES.COLLECTION, label: "Collections", icon: BookmarkIcon },
   { href: ROUTES.ASK, label: "Ask", icon: PlusCircleIcon },
-  { href: ROUTES.ME, label: "Me", icon: CompassIcon },
 ] as const;
 
 export function NavLinks({ className, onNavigate }: NavLinksProps) {
   const pathname = usePathname();
+  const [hoveredHref, setHoveredHref] = useState<string | null>(null);
 
   return (
-    <div className={cn("flex flex-col gap-1", className)}>
-      {NAV_ITEMS.map((item) => {
-        const isActive =
-          pathname === item.href || pathname?.startsWith(item.href + "/");
-        const Icon = item.icon;
+    <motion.div
+      className={cn("flex flex-col", className)}
+      onMouseLeave={() => setHoveredHref(null)}
+    >
+      <AnimatePresence>
+        {NAV_ITEMS.map((item) => {
+          const isActive =
+            pathname === item.href || pathname?.startsWith(item.href + "/");
 
-        return (
-          <Link
-            key={item.href}
-            href={item.href}
-            onClick={onNavigate}
-            className={cn(
-              "flex items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors",
-              "hover:bg-accent hover:text-accent-foreground",
-              isActive
-                ? "bg-accent text-accent-foreground"
-                : "text-muted-foreground",
-            )}
-          >
-            <Icon className="size-4 shrink-0" />
-            <span className="truncate">{item.label}</span>
-          </Link>
-        );
-      })}
-    </div>
+          const Icon = item.icon;
+          const isHovered = hoveredHref === item.href;
+
+          return (
+            <div
+              key={item.href}
+              className="relative"
+              onMouseEnter={() => setHoveredHref(item.href)}
+            >
+              {isHovered && (
+                <motion.div
+                  layoutId="hovered-link"
+                  className="bg-muted/50 absolute inset-0 rounded-md"
+                  transition={{
+                    type: "spring",
+                    stiffness: 500,
+                    damping: 40,
+                  }}
+                />
+              )}
+
+              <Link
+                href={item.href}
+                onClick={onNavigate}
+                className={cn(
+                  "relative z-10 flex items-center gap-2 rounded-md px-3 py-2 text-sm",
+                  isActive
+                    ? "bg-muted/50 text-accent-foreground"
+                    : "text-muted-foreground hover:text-muted-foreground",
+                )}
+              >
+                <Icon className="size-4 shrink-0" />
+                <span className="truncate">{item.label}</span>
+              </Link>
+            </div>
+          );
+        })}
+      </AnimatePresence>
+    </motion.div>
+  );
+}
+
+export function SideBarContent({ onNavigate }: { onNavigate?: () => void }) {
+  return (
+    <nav className="flex h-full flex-col justify-between px-2">
+      <NavLinks onNavigate={onNavigate} />
+      <ThemeToggler />
+    </nav>
   );
 }
