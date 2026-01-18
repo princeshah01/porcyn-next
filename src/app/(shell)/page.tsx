@@ -3,7 +3,7 @@ import {
   FeatureSection,
   NewsLetterSignup,
   Footer,
-} from "~/features/landing/components";
+} from "~/features/landing";
 import { VerticleLine } from "~/shared/components/ui";
 
 export default async function Page() {
