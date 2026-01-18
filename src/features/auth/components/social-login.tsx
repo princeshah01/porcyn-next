@@ -26,7 +26,7 @@ export function SocialLogin() {
     }
   };
   return (
-    <div className="flex w-full items-start justify-center gap-2">
+    <div className="flex w-full flex-1 flex-col gap-2 sm:flex-row">
       {SOCIAL_AUTH_PROVIDERS.map((button) => (
         <SocialButtons
           onClick={() => handleSocialLogin(button.name as "github" | "google")}

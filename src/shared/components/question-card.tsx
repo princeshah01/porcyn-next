@@ -45,21 +45,25 @@ export function QuestionCard({ item }: QuestionCardProps) {
         </div>
         <div className="text-muted-foreground flex items-center gap-4 text-xs">
           <div className="flex items-center gap-2 text-[10px]">
-            <span className="flex items-center gap-px">
+            <span className="flex items-center gap-1">
               <UpArrow className="h-3 w-3" />
               <span>{item.stats.upVote}</span>
+              <span>votes</span>
             </span>
-            <span className="flex items-center gap-px">
+            <span className="flex items-center gap-1">
               <DownArrow className="h-3 w-3" />
               <span>{item.stats.downVote}</span>
+              <span>votes</span>
             </span>
-            <span className="flex items-center gap-px">
+            <span className="flex items-center gap-1">
               <MessageSquare size={10} />
               <span>{item.stats.answer}</span>
+              <span>answers</span>
             </span>
-            <span className="flex items-center gap-px">
+            <span className="flex items-center gap-1">
               <Eye size={10} />
               <span>{item.stats.views}</span>
+              <span>views</span>
             </span>
           </div>
         </div>
