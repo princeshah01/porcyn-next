@@ -1,12 +1,12 @@
-import { Eye, MessageSquare } from "lucide-react";
 import Link from "next/link";
 
-import { UpArrow, DownArrow } from "~/assets/svg";
 import { TagBadgeList } from "~/shared/components/tag-badge";
 import { Avatar, AvatarFallback, AvatarImage } from "~/shared/components/ui";
 import { ROUTES } from "~/shared/constants";
 import { agoDate } from "~/shared/lib";
 import type { Question } from "~/shared/types";
+
+import { StatCard } from "./stat-card";
 
 type QuestionCardProps = {
   item: Question;
@@ -44,28 +44,7 @@ export function QuestionCard({ item }: QuestionCardProps) {
           <span className="text-[10px]">asked {agoDate(item.createdAt)}</span>
         </div>
         <div className="text-muted-foreground flex items-center gap-4 text-xs">
-          <div className="flex items-center gap-2 text-[10px]">
-            <span className="flex items-center gap-1">
-              <UpArrow className="h-3 w-3" />
-              <span>{item.stats.upVote}</span>
-              <span>votes</span>
-            </span>
-            <span className="flex items-center gap-1">
-              <DownArrow className="h-3 w-3" />
-              <span>{item.stats.downVote}</span>
-              <span>votes</span>
-            </span>
-            <span className="flex items-center gap-1">
-              <MessageSquare size={10} />
-              <span>{item.stats.answer}</span>
-              <span>answers</span>
-            </span>
-            <span className="flex items-center gap-1">
-              <Eye size={10} />
-              <span>{item.stats.views}</span>
-              <span>views</span>
-            </span>
-          </div>
+          <StatCard props={item.stats} />
         </div>
       </div>
     </Link>
