@@ -1,8 +1,8 @@
-import { FeedFilters } from "~/components/filters";
-import { LocalSearchBar } from "~/components/search/localsearch-bar";
-import { Button } from "~/components/ui";
-import { ROUTES } from "~/constants";
-import type { SearchParams } from "~/types";
+import { FeedFilters } from "~/features/feed/components/filters";
+import { LocalSearchBar } from "~/shared/components/search/localsearch-bar";
+import { Button } from "~/shared/components/ui";
+import { ROUTES } from "~/shared/constants";
+import type { SearchParams } from "~/shared/types";
 
 export default async function FeedPage({ searchParams }: SearchParams) {
   const { query, filter } = await searchParams;

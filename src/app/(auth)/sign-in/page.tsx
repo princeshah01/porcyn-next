@@ -1,7 +1,6 @@
 "use client";
 
-import { AuthForms } from "~/components/forms";
-import { SignInSchema } from "~/lib/validators";
+import { AuthForms, SignInSchema } from "~/features/auth";
 
 export default function SigninPage() {
   return (
@@ -9,7 +8,6 @@ export default function SigninPage() {
       formType="SIGN_IN"
       schema={SignInSchema}
       defaultValues={{ email: "", password: "" }}
-      // here _ is a placeholder since onSubmit expects data but we are not using it for now
       onSubmit={(_) => Promise.resolve({ success: true })}
     />
   );

@@ -1,5 +1,5 @@
-import { NavigationBar } from "~/components/layout";
-import type { LayoutProps } from "~/types";
+import { NavigationBar } from "~/shared/components/layout";
+import type { LayoutProps } from "~/shared/types";
 
 export default function Layout({ children }: LayoutProps) {
   return (

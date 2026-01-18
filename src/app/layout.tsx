@@ -3,10 +3,10 @@ import localFont from "next/font/local";
 import { SessionProvider } from "next-auth/react";
 
 import { auth } from "~/auth";
-import { ThemeProvider } from "~/components/provider";
-import { Toaster } from "~/components/ui";
+import { ThemeProvider } from "~/shared/components/provider";
+import { Toaster } from "~/shared/components/ui";
 import "./globals.css";
-import { LayoutProps } from "~/types";
+import { LayoutProps } from "~/shared/types";
 // Fonts
 const inter = localFont({
   src: "../assets/fonts/InterVF.ttf",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: LayoutProps) {
   const session = await auth();
-  console.log("Session in RootLayout:", session);
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
