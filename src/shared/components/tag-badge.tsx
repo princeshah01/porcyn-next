@@ -8,18 +8,34 @@ interface Props {
   tags: { _id: string; name: string; count?: number }[];
   showCount?: boolean;
   className?: string;
+  tagClassName?: string;
+  as?: typeof Link | "span";
 }
 interface TagBadgeProps {
   name: string;
   count?: number;
   showCount?: boolean;
+  className?: string;
+  as?: typeof Link | "span";
 }
 
-const TagBadgeList = ({ tags, showCount, className }: Props) => {
+const TagBadgeList = ({
+  tags,
+  showCount,
+  className,
+  tagClassName,
+  as,
+}: Props) => {
   return (
     <ul className={cn("flex flex-col flex-wrap gap-2", className)}>
       {tags.map((tag, idx) => (
-        <TagBadge {...tag} key={tag?._id || idx} showCount={showCount} />
+        <TagBadge
+          as={as}
+          {...tag}
+          key={tag?._id || idx}
+          showCount={showCount}
+          className={tagClassName}
+        />
       ))}
     </ul>
   );
@@ -31,14 +47,24 @@ const getIconClassName = (name: string) => {
   return iconClass || "devicon-htmx-plain";
 };
 
-const TagBadge = ({ name, count, showCount = false }: TagBadgeProps) => {
+const TagBadge = ({
+  name,
+  count,
+  showCount = false,
+  className,
+  as,
+}: TagBadgeProps) => {
   const iconClassName = getIconClassName(name);
+  const TagWrapper = as || Link;
   return (
-    <Link
-      className="group flex w-full justify-between pr-5"
+    <TagWrapper
+      className={cn("group flex w-full justify-between pr-5", className)}
       href={`/tags/${name}`}
     >
-      <Badge className="flex rounded-md px-1 text-[8px]" variant="secondary">
+      <Badge
+        className={cn("border-border flex rounded-md px-1 text-[8px]")}
+        variant="secondary"
+      >
         <i className={iconClassName}></i>
         <span>{name.toUpperCase()}</span>
       </Badge>
@@ -47,7 +73,7 @@ const TagBadge = ({ name, count, showCount = false }: TagBadgeProps) => {
           {count}
         </span>
       )}
-    </Link>
+    </TagWrapper>
   );
 };
 

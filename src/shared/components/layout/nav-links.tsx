@@ -38,7 +38,7 @@ export function NavLinks({ className, onNavigate }: NavLinksProps) {
 
   return (
     <motion.div
-      className={cn("flex flex-col", className)}
+      className={cn("flex flex-col gap-2", className)}
       onMouseLeave={() => setHoveredHref(null)}
     >
       <AnimatePresence>

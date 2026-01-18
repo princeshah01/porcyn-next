@@ -1,7 +1,7 @@
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 
-import { TagBadgeList } from "~/features/tags/components/tag-badge";
+import { TagBadgeList } from "~/shared/components/tag-badge";
 // Mock Data
 const TOP_QUESTIONS = [
   {

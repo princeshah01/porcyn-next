@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { RainbowButton, SearchButton } from "~/shared/components/ui";
+import { ROUTES } from "~/shared/constants";
 
 export function Hero() {
   return (
@@ -17,7 +18,7 @@ export function Hero() {
 
       <div className="mt-8 flex flex-col-reverse items-center justify-center gap-4 md:flex-row">
         <RainbowButton asChild className="w-full md:w-fit">
-          <Link href="/sign-in">Ask Question</Link>
+          <Link href={ROUTES.ASK}>Ask Question</Link>
         </RainbowButton>
         <SearchButton />
       </div>

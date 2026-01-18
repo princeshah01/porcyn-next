@@ -8,9 +8,10 @@ const ROUTES = {
   JOBS: "/jobs",
   COLLECTION: "/collection",
   ASK: "/ask",
-  ME: "/me",
+  PROFILE: (username: string) => `/profile/${username}`,
   QUESTION: (id: string) => `/questions/${id}`,
   TAG: (name: string) => `/tags/${name}`,
+  SETTINGS: "/settings",
 };
 
 export { ROUTES };
