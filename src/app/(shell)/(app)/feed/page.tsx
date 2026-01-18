@@ -1,7 +1,24 @@
-export default function FeedPage() {
+import { FeedFilters } from "~/components/filters";
+import { LocalSearchBar } from "~/components/search/localsearch-bar";
+import { Button } from "~/components/ui";
+import { ROUTES } from "~/constants";
+import type { SearchParams } from "~/types";
+
+export default async function FeedPage({ searchParams }: SearchParams) {
+  const { query, filter } = await searchParams;
+  console.log({ query, filter });
   return (
-    <div className="h-[300vh]">
-      <h1>Feed Page</h1>
+    <div className="size-full space-y-4">
+      <div className="flex items-center justify-between">
+        <h1 className="text-xl font-medium">All Questions</h1>
+        <Button size="sm" className="mt-2 text-xs">
+          Ask a Question
+        </Button>
+      </div>
+      <div>
+        <LocalSearchBar route={ROUTES.FEED} placeholder="Search questions..." />
+        <FeedFilters />
+      </div>
     </div>
   );
 }

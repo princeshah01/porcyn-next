@@ -222,3 +222,12 @@
 .animate-fade-spin {
   animation: fade-spin 1.2s linear infinite;
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
