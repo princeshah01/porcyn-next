@@ -18,17 +18,18 @@ const compat = new FlatCompat({
 
 export default defineConfig([
   {
-    ignores: ["components/ui/**/*"],
+    ignores: ["src/shared/components/ui/**/*"],
   },
   ...nextVitals,
   ...nextTs,
   ...compat.extends(
     "standard",
-    "prettier"
+    "prettier",
     // "plugin:tailwindcss/recommended",
   ),
   {
     rules: {
+      "import/export": "off",
       "import/order": [
         "error",
         {
@@ -74,6 +75,6 @@ export default defineConfig([
     "build/**",
     "next-env.d.ts",
     "node_modules/**",
-    "src/components/ui/**/*",
+    "src/shared/components/ui/**/*",
   ]),
 ]);

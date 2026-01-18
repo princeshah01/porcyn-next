@@ -207,9 +207,6 @@
     width: 100%;
     font-family: var(--font-space-grotesk), sans-serif;
     @apply bg-background text-foreground;
-    transition:
-      background-color 0.3s ease,
-      color 0.3s ease;
   }
 }
 
@@ -224,4 +221,13 @@
 
 .animate-fade-spin {
   animation: fade-spin 1.2s linear infinite;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
