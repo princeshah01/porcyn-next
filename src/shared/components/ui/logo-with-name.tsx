@@ -1,5 +1,7 @@
+import Link from "next/link";
 import { Logo } from "~/assets/svg";
 import { cn } from "~/shared/lib";
+import { ROUTES } from "~/shared/constants";
 
 type LogoWithNameProps = {
   size?: "default" | "small" | "large";
@@ -12,12 +14,15 @@ const LogoWithName = ({ size = "default", className }: LogoWithNameProps) => {
   const textSizeClass =
     size === "small" ? "text-sm" : size === "large" ? "text-3xl" : "text-2xl";
   return (
-    <div className={cn("flex items-center gap-1", className)}>
+    <Link
+      href={ROUTES.HOME}
+      className={cn("flex items-center gap-1", className)}
+    >
       <Logo className={logoSizeClass} />
       <span className={`${textSizeClass} font-space-grotesk font-normal`}>
         porcyn
       </span>
-    </div>
+    </Link>
   );
 };
 

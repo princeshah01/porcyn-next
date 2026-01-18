@@ -4,5 +4,5 @@ export type LayoutProps = Readonly<{
 }>;
 
 export interface SearchParams {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+  searchParams: Promise<{ [key: string]: string | undefined }>;
 }

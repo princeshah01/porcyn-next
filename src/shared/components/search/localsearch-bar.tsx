@@ -51,7 +51,7 @@ const LocalSearchBar = ({
   return (
     <label
       className={cn(
-        "group bg-muted flex min-h-10 grow cursor-text items-center space-x-4 rounded-xl px-4",
+        "group bg-muted/80 flex min-h-10 grow cursor-text items-center space-x-4 rounded-xl px-4",
         className,
       )}
     >
