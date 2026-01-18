@@ -9,6 +9,8 @@ const ROUTES = {
   COLLECTION: "/collection",
   ASK: "/ask",
   ME: "/me",
+  QUESTION: (id: string) => `/questions/${id}`,
+  TAG: (name: string) => `/tags/${name}`,
 };
 
 export { ROUTES };

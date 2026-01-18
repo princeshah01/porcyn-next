@@ -16,8 +16,9 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { toast } from "sonner";
-import { getUserEmailPrefix } from "~/lib";
 import { Settings } from "lucide-react";
+import { ROUTES } from "~/constants";
+
 export function ProfileSection() {
   const { data: session, status } = useSession();
   const params = useSearchParams();
@@ -73,10 +74,7 @@ export function ProfileSection() {
                 </Avatar>
                 <div className="flex flex-col">
                   <span className="text-xs">{session.user?.name}</span>
-                  <Link
-                    className=""
-                    href={`/me/${getUserEmailPrefix(session.user?.email!)}`}
-                  >
+                  <Link className="" href={ROUTES.ME}>
                     <span className="text-secondary-foreground text-[10px] underline-offset-2 hover:underline">
                       View Profile
                     </span>

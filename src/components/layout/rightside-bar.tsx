@@ -65,7 +65,7 @@ const TopQuestions = () => {
 
 const RightSideBar = () => {
   return (
-    <aside className="border-border/80 fixed top-14 right-0 hidden h-[calc(100vh-3.5rem)] w-[16rem] shrink-0 flex-col border-l p-4 lg:flex xl:w-[20rem]">
+    <aside className="border-border/80 fixed top-14 right-0 hidden h-[calc(100vh-3.5rem)] w-[16rem] shrink-0 flex-col border-l p-4 pt-10 lg:flex xl:w-[20rem]">
       <div className="flex min-h-64 w-full flex-col gap-4">
         <div className="flex w-full flex-col gap-4">
           <h3 className="text-foreground text-sm font-medium">Top Questions</h3>
