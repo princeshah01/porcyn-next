@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { SessionProvider } from "next-auth/react";
-import { ThemeProvider } from "next-themes";
-import React from "react";
 
 import { auth } from "~/auth";
-import { Toaster } from "~/components/ui";
+import { ThemeProvider } from "~/shared/components/provider";
+import { Toaster } from "~/shared/components/ui";
 import "./globals.css";
-
+import { LayoutProps } from "~/shared/types";
 // Fonts
 const inter = localFont({
   src: "../assets/fonts/InterVF.ttf",
@@ -32,31 +31,29 @@ export const metadata: Metadata = {
   Porcyn brings everything together in one smart, connected space`,
 };
 
-export default async function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default async function RootLayout({ children }: LayoutProps) {
   const session = await auth();
-  console.log("Session in RootLayout:", session);
+
   return (
     <html lang="en" suppressHydrationWarning>
-      <SessionProvider session={session}>
-        <body
-          cz-shortcut-listen="true"
-          className={`${inter.className} ${spaceGrotesk.variable} antialiased`}
-        >
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
+      <head>
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+        />
+      </head>
+      <body
+        cz-shortcut-listen="true"
+        className={`${inter.className} ${spaceGrotesk.variable} antialiased`}
+      >
+        <SessionProvider session={session}>
+          <ThemeProvider>
             <Toaster />
-            {children}
+            <div className="flex min-h-screen w-full flex-col">{children}</div>
           </ThemeProvider>
-        </body>
-      </SessionProvider>
+        </SessionProvider>
+      </body>
     </html>
   );
 }
