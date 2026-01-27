@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 
 import { ROUTES } from "~/shared/constants";
@@ -21,12 +20,10 @@ import { Spinner } from "./ui/spinner-1";
 
 export function ProfileSection() {
   const { data: session, status } = useSession();
-  const showExplore = usePathname() === "/" && session;
-
   return status === "loading" ? (
     <Spinner />
   ) : (
-    <div className={cn("md:ml-8", showExplore && "md:ml-4")}>
+    <div className={cn("md:ml-8")}>
       {!session ? (
         <Link href={ROUTES.SIGN_IN}>
           <Button
@@ -39,17 +36,6 @@ export function ProfileSection() {
         </Link>
       ) : (
         <div className="flex items-center gap-2">
-          {showExplore && (
-            <Link href={ROUTES.FEED}>
-              <Button
-                variant="link"
-                className="rounded-lg text-xs md:text-sm"
-                size="sm"
-              >
-                Explore
-              </Button>
-            </Link>
-          )}
           <DropdownMenu>
             <DropdownMenuTrigger>
               <Avatar className="border-border h-9 w-9 border-3">
