@@ -6,11 +6,13 @@ export interface Question {
     profileUrl?: string;
   };
   tags: { _id: string; name: string }[];
-  stats: {
-    upVote: number;
-    downVote: number;
-    views: number;
-    answer: number;
-  };
+  stats: StatsType;
   createdAt: string;
+}
+
+export interface StatsType {
+  upVote: number;
+  downVote: number;
+  views: number;
+  answer: number;
 }

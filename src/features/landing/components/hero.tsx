@@ -18,7 +18,7 @@ export function Hero() {
 
       <div className="mt-8 flex flex-col-reverse items-center justify-center gap-4 md:flex-row">
         <RainbowButton asChild className="w-full md:w-fit">
-          <Link href={ROUTES.ASK}>Ask Question</Link>
+          <Link href={ROUTES.FEED}>Check the Feed</Link>
         </RainbowButton>
         <SearchButton />
       </div>
