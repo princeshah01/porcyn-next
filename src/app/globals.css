@@ -231,3 +231,12 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+@media (max-width: 480px) {
+  .tiptap-toolbar[data-variant="fixed"] {
+    position: static !important;
+  }
+}
+.tiptap-toolbar[data-variant="fixed"] {
+  flex-wrap: nowrap !important;
+}

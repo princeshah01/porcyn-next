@@ -35,6 +35,7 @@
     "react-hook-form": "^7.49.2",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.4.0",
+    "tip-tap-source": "git+https://github.com/princeshah01/tiptap-ai-editor.git",
     "vaul": "^1.1.2",
     "zod": "^3.22.4"
   },
